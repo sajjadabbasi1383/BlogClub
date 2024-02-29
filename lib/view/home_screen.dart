@@ -12,13 +12,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Hi, Sajjad!",style: Theme.of(context).textTheme.titleMedium,),
+                  Image.asset("assets/img/icons/notification.png",width: 35,height: 35,),
+                ],
+              ),
+              const SizedBox(height: 10,),
+              Text("Explore today's",style: Theme.of(context).textTheme.headlineMedium,),
+              const SizedBox(height: 20,),
+              
             ],
           ),
         ),
