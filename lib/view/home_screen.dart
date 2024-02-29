@@ -1,6 +1,8 @@
 import 'package:blog_club/model/story.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/story_item.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -35,45 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: stories.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(vertical: 2,horizontal: 4),
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Container(
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color(0xff376AED),
-                                      Color(0xff49B0E2),
-                                      Color(0xff9CECFB),
-                                    ],
-                                    begin: Alignment.topCenter
-                                  ),
-                                ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(25)
-                                  ),
-                                  padding: const EdgeInsets.all(5),
-                                  margin: const EdgeInsets.all(2),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.asset(stories[index].imageFileName),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Expanded(child: Text(stories[index].name,style: Theme.of(context).textTheme.bodyMedium,))
-                        ],
-                      ),
-                    );
+                    return StoryItem(story: stories[index],);
                   },),
               ),
             ],
@@ -83,3 +47,4 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 }
+
