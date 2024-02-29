@@ -1,4 +1,5 @@
 import 'package:blog_club/constant.dart';
+import 'package:blog_club/view/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -10,7 +11,12 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int currentTab = 0;
-  List screens = [];
+  List screens = [
+    HomeScreen(),
+    Scaffold(),
+    Scaffold(),
+    Scaffold(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +47,10 @@ class _MainScreenState extends State<MainScreen> {
                       title: "Home",
                       icon: "assets/img/icons/Home.png",
                       activeIcon: "assets/img/icons/HomeActive.png",
-                      isActive: currentTab==0,
+                      isActive: currentTab == 0,
                       onTap: () {
                         setState(() {
-                          currentTab=0;
+                          currentTab = 0;
                         });
                       },
                     ),
@@ -52,10 +58,10 @@ class _MainScreenState extends State<MainScreen> {
                       title: "Articles",
                       icon: "assets/img/icons/Articles.png",
                       activeIcon: "assets/img/icons/ArticlesActive.png",
-                      isActive: currentTab==1,
+                      isActive: currentTab == 1,
                       onTap: () {
                         setState(() {
-                          currentTab=1;
+                          currentTab = 1;
                         });
                       },
                     ),
@@ -64,10 +70,10 @@ class _MainScreenState extends State<MainScreen> {
                       title: "Search",
                       icon: "assets/img/icons/Search.png",
                       activeIcon: "assets/img/icons/SearchActive.png",
-                      isActive: currentTab==2,
+                      isActive: currentTab == 2,
                       onTap: () {
                         setState(() {
-                          currentTab=2;
+                          currentTab = 2;
                         });
                       },
                     ),
@@ -75,10 +81,10 @@ class _MainScreenState extends State<MainScreen> {
                       title: "Menu",
                       icon: "assets/img/icons/Menu.png",
                       activeIcon: "assets/img/icons/MenuActive.png",
-                      isActive: currentTab==3,
+                      isActive: currentTab == 3,
                       onTap: () {
                         setState(() {
-                          currentTab=3;
+                          currentTab = 3;
                         });
                       },
                     ),
@@ -92,16 +98,16 @@ class _MainScreenState extends State<MainScreen> {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white,width: 4),
-                  shape: BoxShape.circle,
-                  color: primaryColor
-                ),
+                    border: Border.all(color: Colors.white, width: 4),
+                    shape: BoxShape.circle,
+                    color: primaryColor),
                 child: Image.asset("assets/img/icons/plus.png"),
               ),
             ),
           ],
         ),
       ),
+      body: screens[currentTab],
     ));
   }
 }
@@ -130,7 +136,7 @@ class BottomNavItem extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            isActive?activeIcon:icon,
+            isActive ? activeIcon : icon,
             width: 30,
             height: 30,
             scale: 0.9,
@@ -140,7 +146,12 @@ class BottomNavItem extends StatelessWidget {
           ),
           Text(
             title,
-            style: isActive?Theme.of(context).textTheme.bodyMedium!.copyWith(color: primaryColor):Theme.of(context).textTheme.bodyMedium,
+            style: isActive
+                ? Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: primaryColor)
+                : Theme.of(context).textTheme.bodyMedium,
           )
         ],
       ),
