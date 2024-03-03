@@ -2,7 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
-import '../model/story.dart';
+import '../model/story_model.dart';
 class StoryItem extends StatelessWidget {
   final Story story;
   const StoryItem({
