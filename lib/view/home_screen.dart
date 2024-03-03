@@ -66,7 +66,17 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Latest News",
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text("More"))
+                ],
+              ),
+              
             ],
           ),
         ),
@@ -74,4 +84,3 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 }
-
