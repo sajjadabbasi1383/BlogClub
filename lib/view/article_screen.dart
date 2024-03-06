@@ -93,7 +93,22 @@ class _ArticleScreenState extends State<ArticleScreen> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                    ),
+                    child: Image.asset("assets/img/background/single_post.png"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                    child: Text(
+                      "A man's emotional tendencies is never your mind responsibility.",
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                  ),
+
                 ]),
               ),
             ],
