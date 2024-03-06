@@ -13,13 +13,13 @@ class Category {
 const List<Category> categories = [
   Category(
     id: 1,
-    title: 'Technology',
-    imageFileName: 'assets/img/posts/large/large_post_1.jpg',
+    title: 'Cinema',
+    imageFileName: 'assets/img/posts/large/large_post_2.jpg',
   ),
   Category(
     id: 2,
-    title: 'Cinema',
-    imageFileName: 'assets/img/posts/large/large_post_2.jpg',
+    title: 'Technology',
+    imageFileName: 'assets/img/posts/large/large_post_1.jpg',
   ),
   Category(
     id: 3,
