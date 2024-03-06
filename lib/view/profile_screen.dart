@@ -1,6 +1,8 @@
 import 'package:blog_club/constant.dart';
+import 'package:blog_club/widget/post_card.dart';
 import 'package:flutter/material.dart';
 
+import '../model/post_model.dart';
 import '../widget/about_profile_box.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -52,6 +54,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20),
                 ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text("My Post",style: Theme.of(context).textTheme.headlineSmall,),
+                      const Spacer(),
+                      IconButton(onPressed: () {}, icon: const Icon(Icons.grid_view,color: primaryColor,)),
+                      IconButton(onPressed: () {}, icon: const Icon(Icons.list)),
+                    ],
+                  ),
+                  const SizedBox(height: 20,),
+                  for(var post in posts) PostCard(post: post),
+                ],
               ),
             ),
           ],
