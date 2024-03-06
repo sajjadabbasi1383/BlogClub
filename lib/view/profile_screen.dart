@@ -1,6 +1,8 @@
 import 'package:blog_club/constant.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/about_profile_box.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -39,70 +41,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(25),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 20,
-                      color: backgroundColor.withOpacity(0.9),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 80,
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: primaryColor.withOpacity(0.5),
-                                  width: 2.5),
-                              borderRadius: BorderRadius.circular(25)),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child:
-                                Image.asset("assets/img/stories/story_8.jpg"),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text("@SajjadDev"),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Sajjad Abbasi",
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Mobile Developer",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .apply(color: primaryColor),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+            const AboutProfileBox(),
+            const SizedBox(height: 40,),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(30),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(20),
                 ),
               ),
             ),
@@ -112,3 +60,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
     ));
   }
 }
+
