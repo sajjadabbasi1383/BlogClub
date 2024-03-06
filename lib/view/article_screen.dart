@@ -14,6 +14,13 @@ class _ArticleScreenState extends State<ArticleScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
+        label: const Text("2.1k"),
+        icon: const Icon(Icons.thumb_up),
+      ),
       body: Stack(
         children: [
           CustomScrollView(
@@ -21,7 +28,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
               SliverAppBar(
                 leadingWidth: 100,
                 leading: IconButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pop(context),
                   iconSize: 30,
                   icon: const Icon(CupertinoIcons.chevron_back),
                 ),
@@ -102,14 +109,14 @@ class _ArticleScreenState extends State<ArticleScreen> {
                     child: Image.asset("assets/img/background/single_post.png"),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(30, 25, 30, 0),
                     child: Text(
                       "A man's emotional tendencies is never your mind responsibility.",
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 30),
+                    padding: const EdgeInsets.fromLTRB(20, 15, 20, 30),
                     child: Text(
                       '''A man’s sexuality is never your mind responsibility.\nThis one got an incredible amount of backlash the last time I said it, so I’m going to say it again: a man’s sexuality is never, ever your responsibility, under any circumstances. Whether it’s the fifth date or your twentieth year of marriage, the correct determining factor for whether or not you have sex with your partner isn’t whether you ought to “take care of him” or “put out” because it’s been a while or he’s really horny — the correct determining factor for whether or not you have sex is whether or not you want to have sex.This one got an incredible amount of backlash the last time I said it, so I’m going to say it again: a man’s sexuality is never, ever your responsibility, under any circumstances. Whether it’s the fifth date or your twentieth year of marriage, the correct determining factor for whether or not you have sex with your partner isn’t whether you ought to “take care of him” or “put out” because it’s been a while or he’s really horny — the correct determining factor for whether or not you have sex is whether or not you want to have sex.This one got an incredible amount of backlash the last time I said it, so I’m going to say it again: a man’s sexuality is never, ever your responsibility, under any circumstances. Whether it’s the fifth date or your twentieth year of marriage, the correct determining factor for whether or not you have sex with your partner isn’t whether you ought to “take care of him” or “put out” because it’s been a while or he’s really horny — the correct determining factor for whether or not you have sex is whether or not you want to have sex.''',
                       style: Theme.of(context).textTheme.bodyLarge,
@@ -119,6 +126,23 @@ class _ArticleScreenState extends State<ArticleScreen> {
                 ]),
               ),
             ],
+          ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              width: MediaQuery.sizeOf(context).width,
+              height: MediaQuery.sizeOf(context).height / 8,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Colors.white,
+                    Colors.white.withOpacity(0.2),
+                  ],
+                ),
+              ),
+            ),
           ),
         ],
       ),
