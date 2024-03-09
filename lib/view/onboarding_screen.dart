@@ -14,6 +14,19 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController();
+  int page = 0;
+
+  @override
+  void initState() {
+    _pageController.addListener(() {
+      if (_pageController.page!.round() != page) {
+        setState(() {
+          page = _pageController.page!.round();
+        });
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +107,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12)))),
-                        child: const Icon(CupertinoIcons.arrow_right),
+                        child: Icon(page == onBoardingItems.length - 1
+                            ? CupertinoIcons.check_mark
+                            : CupertinoIcons.arrow_right),
                       ),
                     ],
                   ),
