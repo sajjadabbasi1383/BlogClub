@@ -1,5 +1,6 @@
 import 'package:blog_club/constant.dart';
 import 'package:blog_club/model/onboarding_model.dart';
+import 'package:blog_club/view/main_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -28,7 +29,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
           ),
           Container(
-            height: 280,
+            height: 260,
             decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -40,15 +41,42 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     topRight: Radius.circular(30))),
             child: Column(
               children: [
+                Expanded(
+                    child: PageView.builder(
+                  itemCount: onBoardingItems.length,
+                  controller: _pageController,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(28.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            onBoardingItems[index].title,
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            onBoardingItems[index].description,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                )),
                 Container(
                   height: 60,
-                  padding: const EdgeInsets.only(left: 30,right: 30),
+                  padding:
+                      const EdgeInsets.only(left: 30, right: 30, bottom: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SmoothPageIndicator(
-                          controller: _pageController,
-                          count: onBoardingItems.length,
+                        controller: _pageController,
+                        count: onBoardingItems.length,
                         effect: ExpandingDotsEffect(
                           activeDotColor: primaryColor,
                           dotColor: primaryColor.withOpacity(0.2),
