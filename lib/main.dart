@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       scrollBehavior: const CupertinoScrollBehavior(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
-        useMaterial3: true,
+        useMaterial3: false,
         fontFamily: "Avenir",
         textTheme: const TextTheme(
           titleSmall: TextStyle(
