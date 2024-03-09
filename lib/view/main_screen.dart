@@ -1,5 +1,7 @@
 import 'package:blog_club/constant.dart';
+import 'package:blog_club/view/article_screen.dart';
 import 'package:blog_club/view/home_screen.dart';
+import 'package:blog_club/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -12,10 +14,10 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int currentTab = 0;
   List screens = [
-    HomeScreen(),
-    Scaffold(),
-    Scaffold(),
-    Scaffold(),
+    const HomeScreen(),
+    const ArticleScreen(),
+    const Scaffold(),
+    const ProfileScreen(),
   ];
 
   @override

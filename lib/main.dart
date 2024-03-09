@@ -1,4 +1,4 @@
-import 'package:blog_club/view/main_screen.dart';
+import 'package:blog_club/view/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MainScreen(),
+      home: const SplashScreen(),
     );
   }
 }
