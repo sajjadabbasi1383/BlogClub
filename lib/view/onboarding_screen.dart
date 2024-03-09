@@ -98,7 +98,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (page == onBoardingItems.length - 1) {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const MainScreen(),
+                                ));
+                          }else {
+                            _pageController.animateToPage(page+1, duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+                          }
+                        },
                         style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all(primaryColor),
