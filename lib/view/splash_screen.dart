@@ -1,4 +1,5 @@
 import 'package:blog_club/view/main_screen.dart';
+import 'package:blog_club/view/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then((value) =>
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const MainScreen(),)));
+            MaterialPageRoute(builder: (context) => const OnBoardingScreen(),)));
     super.initState();
   }
 
