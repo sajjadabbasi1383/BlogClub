@@ -10,6 +10,9 @@ class AuthenticationScreen extends StatefulWidget {
 }
 
 class _AuthenticationScreenState extends State<AuthenticationScreen> {
+  static const loginTab = 0;
+  static const signTab = 1;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context).textTheme;
@@ -38,10 +41,13 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          "LOGIN",
-                          style: theme.titleLarge!.apply(color: Colors.white),
-                        ),
+                        TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "LOGIN",
+                              style:
+                                  theme.titleLarge!.apply(color: Colors.white),
+                            )),
                         Text(
                           "SIGN UP",
                           style: theme.titleLarge!.apply(color: Colors.white),
@@ -76,7 +82,6 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
 
 class _Login extends StatelessWidget {
   const _Login({
-    super.key,
     required this.theme,
   });
 
@@ -169,6 +174,95 @@ class _Login extends StatelessWidget {
   }
 }
 
+class _SignUp extends StatelessWidget {
+  const _SignUp({
+    required this.theme,
+  });
+
+  final TextTheme theme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Welcome to blog club",
+          style: theme.headlineMedium,
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Text(
+          "Please enter your information",
+          style: theme.titleSmall,
+        ),
+        const SizedBox(
+          height: 18,
+        ),
+        const TextField(
+          decoration: InputDecoration(label: Text("FullName")),
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        const TextField(
+          decoration: InputDecoration(label: Text("UserName")),
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        const PasswordTextField(),
+        const SizedBox(
+          height: 20,
+        ),
+        ElevatedButton(
+            style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(
+                    Size(MediaQuery.sizeOf(context).width, 60)),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)))),
+            onPressed: () {},
+            child: const Text("SIGN UP")),
+        const SizedBox(
+          height: 25,
+        ),
+        const Center(
+          child: Text(
+            "OR SIGN UP WITH",
+            style: TextStyle(letterSpacing: 2),
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/img/icons/Google.png",
+              width: 40,
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Image.asset(
+              "assets/img/icons/Facebook.png",
+              width: 40,
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Image.asset(
+              "assets/img/icons/Twitter.png",
+              width: 40,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
 
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
