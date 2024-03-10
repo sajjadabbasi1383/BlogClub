@@ -18,7 +18,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 25, bottom: 25),
+            padding: const EdgeInsets.only(top: 32, bottom: 32),
             child: SvgPicture.asset(
               "assets/img/icons/LOGO.svg",
               width: 130,
@@ -56,41 +56,10 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(30),
                               topRight: Radius.circular(30))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Welcome Back",
-                              style: theme.headlineMedium,
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              "Sign in with your account",
-                              style: theme.titleSmall,
-                            ),
-                            const SizedBox(
-                              height: 18,
-                            ),
-                            const TextField(
-                              decoration:
-                                  InputDecoration(label: Text("UserName")),
-                            ),
-                            const TextField(
-                              obscureText: true,
-                              enableSuggestions: true,
-                              autocorrect: false,
-                              decoration:
-                                  InputDecoration(label: Text("Password")),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-
-                          ],
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(30.0),
+                          child: _Login(theme: theme),
                         ),
                       ),
                     ),
@@ -102,5 +71,132 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
         ],
       ),
     ));
+  }
+}
+
+class _Login extends StatelessWidget {
+  const _Login({
+    super.key,
+    required this.theme,
+  });
+
+  final TextTheme theme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Welcome Back",
+          style: theme.headlineMedium,
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Text(
+          "Sign in with your account",
+          style: theme.titleSmall,
+        ),
+        const SizedBox(
+          height: 18,
+        ),
+        const TextField(
+          decoration: InputDecoration(label: Text("UserName")),
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        const PasswordTextField(),
+        const SizedBox(
+          height: 20,
+        ),
+        ElevatedButton(
+            style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(
+                    Size(MediaQuery.sizeOf(context).width, 60)),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)))),
+            onPressed: () {},
+            child: const Text("LOGIN")),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Forgot your password?"),
+            const SizedBox(
+              width: 10,
+            ),
+            TextButton(onPressed: () {}, child: const Text("Reset here")),
+          ],
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        const Center(
+          child: Text(
+            "OR SIGN IN WITH",
+            style: TextStyle(letterSpacing: 2),
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/img/icons/Google.png",
+              width: 40,
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Image.asset(
+              "assets/img/icons/Facebook.png",
+              width: 40,
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Image.asset(
+              "assets/img/icons/Twitter.png",
+              width: 40,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+
+class PasswordTextField extends StatefulWidget {
+  const PasswordTextField({
+    super.key,
+  });
+
+  @override
+  State<PasswordTextField> createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  bool obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      obscureText: obscureText,
+      enableSuggestions: true,
+      autocorrect: false,
+      decoration: InputDecoration(
+          label: const Text("Password"),
+          suffixIcon: TextButton(
+              onPressed: () {
+                setState(() {
+                  obscureText = !obscureText;
+                });
+              },
+              child: Text(obscureText ? "Show" : "Hide"))),
+    );
   }
 }
