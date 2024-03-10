@@ -13,6 +13,8 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
   static const loginTab = 0;
   static const signTab = 1;
 
+  int selectedTabIndex = loginTab;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context).textTheme;
@@ -42,16 +44,27 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                selectedTabIndex = loginTab;
+                              });
+                            },
                             child: Text(
                               "LOGIN",
                               style:
-                                  theme.titleLarge!.apply(color: Colors.white),
+                                  theme.titleLarge!.apply(color: selectedTabIndex==loginTab?Colors.white:Colors.white70),
                             )),
-                        Text(
-                          "SIGN UP",
-                          style: theme.titleLarge!.apply(color: Colors.white),
-                        ),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                selectedTabIndex=signTab;
+                              });
+                            },
+                            child: Text(
+                              "SIGN UP",
+                              style:
+                                  theme.titleLarge!.apply(color: selectedTabIndex==signTab?Colors.white:Colors.white70),
+                            ))
                       ],
                     ),
                   ),
@@ -65,7 +78,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                       child: SingleChildScrollView(
                         child: Padding(
                           padding: const EdgeInsets.all(30.0),
-                          child: _Login(theme: theme),
+                          child: selectedTabIndex==loginTab? _Login(theme: theme):_SignUp(theme: theme),
                         ),
                       ),
                     ),
