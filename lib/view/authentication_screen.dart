@@ -12,6 +12,7 @@ class AuthenticationScreen extends StatefulWidget {
 class _AuthenticationScreenState extends State<AuthenticationScreen> {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context).textTheme;
     return SafeArea(
         child: Scaffold(
       body: Column(
@@ -39,17 +40,11 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                       children: [
                         Text(
                           "LOGIN",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .apply(color: Colors.white),
+                          style: theme.titleLarge!.apply(color: Colors.white),
                         ),
                         Text(
                           "SIGN UP",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .apply(color: Colors.white),
+                          style: theme.titleLarge!.apply(color: Colors.white),
                         ),
                       ],
                     ),
@@ -61,8 +56,42 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(30),
                               topRight: Radius.circular(30))),
-                      child: Column(
-                        children: [],
+                      child: Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Welcome Back",
+                              style: theme.headlineMedium,
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              "Sign in with your account",
+                              style: theme.titleSmall,
+                            ),
+                            const SizedBox(
+                              height: 18,
+                            ),
+                            const TextField(
+                              decoration:
+                                  InputDecoration(label: Text("UserName")),
+                            ),
+                            const TextField(
+                              obscureText: true,
+                              enableSuggestions: true,
+                              autocorrect: false,
+                              decoration:
+                                  InputDecoration(label: Text("Password")),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+
+                          ],
+                        ),
                       ),
                     ),
                   ),
