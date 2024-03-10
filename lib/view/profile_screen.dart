@@ -1,4 +1,5 @@
 import 'package:blog_club/constant.dart';
+import 'package:blog_club/view/authentication_screen.dart';
 import 'package:blog_club/widget/post_card.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   const Spacer(),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthenticationScreen(),));
+                      },
                       icon: const Icon(
                         Icons.more_vert,
                         size: 35,
